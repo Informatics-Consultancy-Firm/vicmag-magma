@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VICMAG Enterprises & MAGMA Company Limited | Quality Building Materials</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #E8C860;
+            --gold-dark: #B8960C;
+            --black: #0A0A0A;
+            --black-light: #1A1A1A;
+            --black-lighter: #2D2D2D;
+            --white: #FFFFFF;
+            --off-white: #F5F5F5;
+            --gray: #888888;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.7rem 5%;
+            background: rgba(10, 10, 10, 0.98);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--black);
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .logo-text span {
+            color: var(--white);
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--black) 0%, var(--black-light) 50%, var(--black) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-content {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold);
+            border-radius: 50px;
+            color: var(--gold);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 .gold {
+            color: var(--gold);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50px;
+            color: var(--gold);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Why Choose Us */
+        .why-choose {
+            background: var(--black-light);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--black);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.05));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-icon i {
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--black);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image-main {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, var(--black-lighter), var(--black-light));
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image-main i {
+            font-size: 8rem;
+            color: var(--gold);
+            opacity: 0.3;
+        }
+
+        .about-image-main::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text h2 .gold {
+            color: var(--gold);
+        }
+
+        .about-text p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-values {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .value-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .value-item i {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .value-item span {
+            font-size: 0.95rem;
+        }
+
+        /* Vision & Mission */
+        .vision-mission {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .vm-card {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .vm-card h4 {
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .vm-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Products Section */
+        .products {
+            background: linear-gradient(180deg, var(--black-light) 0%, var(--black) 100%);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--black);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--black-lighter), var(--black-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .product-image i {
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.6;
+        }
+
+        .product-content {
+            padding: 2rem;
+        }
+
+        .product-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .product-content p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* Delivery Section */
+        .delivery {
+            background: var(--black);
+        }
+
+        .delivery-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .delivery-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .delivery-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .delivery-option:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .delivery-option-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .delivery-option-icon i {
+            color: var(--black);
+            font-size: 1.3rem;
+        }
+
+        .delivery-option h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .delivery-option p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Quality Section */
+        .quality {
+            background: var(--black-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quality-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .quality-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+        }
+
+        .quality-icon i {
+            font-size: 3rem;
+            color: var(--black);
+        }
+
+        .quality h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quality p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Clients Section */
+        .clients {
+            background: var(--black);
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .client-card {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .client-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .client-card i {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .client-card h4 {
+            font-size: 1rem;
+            color: var(--white);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(180deg, var(--black-light) 0%, var(--black) 100%);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: var(--black);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            border-color: var(--gold);
+        }
+
+        .contact-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .contact-item div {
+            flex: 1;
+        }
+
+        .contact-item label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-item span, .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--gold);
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            padding: 5rem;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            color: var(--black);
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            color: var(--black);
+            opacity: 0.8;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta .btn {
+            background: var(--black);
+            color: var(--gold);
+        }
+
+        .cta .btn:hover {
+            background: var(--black-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            padding: 3rem 5%;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .footer-logo .logo-icon {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+        }
+
+        .footer-logo .logo-text {
+            font-size: 1.1rem;
+        }
+
+        .footer-copyright {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .footer-copyright .gold {
+            color: var(--gold);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 992px) {
+            .about-content,
+            .delivery-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .about-image-main {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--black);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .about-values,
+            .vision-mission {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cta {
+                padding: 3rem 2rem;
+            }
+
+            .cta h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-icon">VM</div>
+            <div class="logo-text">VICMAG <span>& MAGMA</span></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#delivery">Delivery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">Premium Building Materials Supplier</div>
+            <h1>Your Trusted Partner for <span class="gold">Building Materials</span> & Furniture Supply</h1>
+            <p>VICMAG Enterprises and MAGMA Company Limited specialize in the supply of high-quality building and construction materials for residential, commercial, and infrastructure projects.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Get a Quote</a>
+                <a href="#products" class="btn btn-secondary">View Products</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Products</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose" id="why-us">
+        <div class="section-header">
+            <div class="section-badge">Why Choose Us</div>
+            <h2>Excellence in Every Delivery</h2>
+            <p>We combine quality, reliability, and professional service to support your construction projects.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <h3>Premium Quality</h3>
+                <p>High-quality, standards-compliant materials sourced from reputable manufacturers and suppliers.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <h3>Competitive Pricing</h3>
+                <p>Transparent and competitive pricing with no hidden costs, offering the best value for your investment.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-truck-fast"></i>
+                </div>
+                <h3>Reliable Delivery</h3>
+                <p>Efficient logistics ensuring your materials arrive on site as scheduled, every time.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>Professional Support</h3>
+                <p>Dedicated customer service team ready to assist with quotations, inquiries, and technical advice.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Strong Partnerships</h3>
+                <p>Established relationships with leading suppliers and manufacturers for consistent availability.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <div class="about-image fade-in">
+                <div class="about-image-main">
+                    <i class="fas fa-building"></i>
+                </div>
+            </div>
+            <div class="about-text fade-in">
+                <div class="section-badge">About Us</div>
+                <h2>Building <span class="gold">Excellence</span> Together</h2>
+                <p>VICMAG Enterprises and MAGMA Company Limited is a locally established business dedicated to supplying dependable building materials and furniture. Working independently or collaboratively, we provide flexible solutions tailored to project size, timeline, and budget.</p>
+                <p>Our operations are guided by professionalism, accountability, and a commitment to customer satisfaction.</p>
+                
+                <div class="about-values">
+                    <div class="value-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Integrity and Trust</span>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Quality Assurance</span>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Efficiency & Reliability</span>
+                    </div>
+                    <div class="value-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Customer-Focused</span>
+                    </div>
+                </div>
+
+                <div class="vision-mission">
+                    <div class="vm-card">
+                        <h4><i class="fas fa-eye"></i> Our Vision</h4>
+                        <p>To be a leading and trusted building materials supplier in the region.</p>
+                    </div>
+                    <div class="vm-card">
+                        <h4><i class="fas fa-bullseye"></i> Our Mission</h4>
+                        <p>To support construction projects by delivering quality materials efficiently and reliably.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="section-header">
+            <div class="section-badge">Our Products</div>
+            <h2>Building Materials Range</h2>
+            <p>We supply a wide selection of construction materials suitable for all stages of building projects.</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="product-content">
+                    <h3>Roofing Materials</h3>
+                    <p>Galvanized zinc, stone coat decra zinc with accessories, roofing nails and all sizes of nails for complete roofing solutions.</p>
+                </div>
+            </div>
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <i class="fas fa-th-large"></i>
+                </div>
+                <div class="product-content">
+                    <h3>Tiles & Flooring</h3>
+                    <p>Ceramic and marble tiles of all sizes for floors, walls, and decorative applications.</p>
+                </div>
+            </div>
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <i class="fas fa-door-open"></i>
+                </div>
+                <div class="product-content">
+                    <h3>Doors & Accessories</h3>
+                    <p>Complete range of doors including steel, wooden, and glass doors with all necessary accessories.</p>
+                </div>
+            </div>
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+                <div class="product-content">
+                    <h3>Ceiling & Wall Panels</h3>
+                    <p>PVC ceiling, gypsum board, wall panels, cladding material, Alucobond, and WPC solutions.</p>
+                </div>
+            </div>
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <i class="fas fa-sink"></i>
+                </div>
+                <div class="product-content">
+                    <h3>Kitchen & Bathroom</h3>
+                    <p>Kitchen cabinets with accessories, WC, toilet accessories, and complete plumbing supplies.</p>
+                </div>
+            </div>
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <i class="fas fa-couch"></i>
+                </div>
+                <div class="product-content">
+                    <h3>Furniture & Finishes</h3>
+                    <p>Quality furniture, paints, finishing materials, and electrical supplies for complete project needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Section -->
+    <section class="delivery" id="delivery">
+        <div class="delivery-content">
+            <div class="fade-in">
+                <div class="section-badge">Supply & Delivery</div>
+                <h2>Reliable <span class="gold">Logistics</span> Solutions</h2>
+                <p style="color: var(--gray); margin-bottom: 2rem;">We provide efficient delivery services to ensure materials arrive on site as scheduled. Products can be supplied in bulk or small quantities depending on client needs.</p>
+                
+                <div class="delivery-options">
+                    <div class="delivery-option">
+                        <div class="delivery-option-icon">
+                            <i class="fas fa-boxes-stacked"></i>
+                        </div>
+                        <div>
+                            <h4>Bulk Material Supply</h4>
+                            <p>Large-scale supply for major construction and infrastructure projects.</p>
+                        </div>
+                    </div>
+                    <div class="delivery-option">
+                        <div class="delivery-option-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div>
+                            <h4>Scheduled Site Deliveries</h4>
+                            <p>Timely deliveries coordinated with your project timeline and requirements.</p>
+                        </div>
+                    </div>
+                    <div class="delivery-option">
+                        <div class="delivery-option-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Project Support</h4>
+                            <p>Short-term and long-term project supply arrangements tailored to your needs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fade-in" style="display: flex; align-items: center; justify-content: center;">
+                <div style="width: 100%; height: 400px; background: linear-gradient(135deg, var(--black-lighter), var(--black-light)); border-radius: 20px; border: 1px solid rgba(212, 175, 55, 0.3); display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-truck" style="font-size: 6rem; color: var(--gold); opacity: 0.4;"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Section -->
+    <section class="quality">
+        <div class="quality-content fade-in">
+            <div class="quality-icon">
+                <i class="fas fa-certificate"></i>
+            </div>
+            <h2>Commitment to <span class="gold">Quality</span></h2>
+            <p>We source materials from reputable manufacturers and suppliers to ensure compliance with industry standards. Quality checks are conducted to maintain consistency and reliability across all our products and deliveries.</p>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="clients">
+        <div class="section-header">
+            <div class="section-badge">Our Customers</div>
+            <h2>Clients We Proudly Serve</h2>
+            <p>From large construction companies to individual homeowners, we support projects of all sizes.</p>
+        </div>
+        <div class="clients-grid">
+            <div class="client-card fade-in">
+                <i class="fas fa-hard-hat"></i>
+                <h4>Construction Companies & Contractors</h4>
+            </div>
+            <div class="client-card fade-in">
+                <i class="fas fa-city"></i>
+                <h4>Property Developers</h4>
+            </div>
+            <div class="client-card fade-in">
+                <i class="fas fa-road"></i>
+                <h4>Civil & Infrastructure Projects</h4>
+            </div>
+            <div class="client-card fade-in">
+                <i class="fas fa-store"></i>
+                <h4>Retail & Wholesale Buyers</h4>
+            </div>
+            <div class="client-card fade-in">
+                <i class="fas fa-house-user"></i>
+                <h4>Individual Homeowners</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-header">
+            <div class="section-badge">Contact Us</div>
+            <h2>Get In Touch</h2>
+            <p>We are ready to assist with quotations, product inquiries, and supply arrangements.</p>
+        </div>
+        <div class="contact-content">
+            <div class="contact-card fade-in">
+                <h3>VICMAG Enterprises</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <label>Address</label>
+                            <span>[Your Address Here]</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <label>Phone</label>
+                            <a href="tel:+000000000">[Your Phone Number]</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <label>Email</label>
+                            <a href="mailto:info@vicmag.com">[Your Email Address]</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-card fade-in">
+                <h3>MAGMA Company Limited</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <label>Address</label>
+                            <span>[Your Address Here]</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <label>Phone</label>
+                            <a href="tel:+000000000">[Your Phone Number]</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <label>Email</label>
+                            <a href="mailto:info@magma.com">[Your Email Address]</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <h2>Ready to Start Your Project?</h2>
+        <p>Contact us today for quotations and supply solutions tailored to your needs.</p>
+        <a href="#contact" class="btn">Request a Quote</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="logo-icon">VM</div>
+                <div class="logo-text">VICMAG <span>& MAGMA</span></div>
+            </div>
+            <div class="footer-copyright">
+                © 2025 <span class="gold">VICMAG Enterprises</span> & <span class="gold">MAGMA Company Limited</span>. All Rights Reserved.
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
